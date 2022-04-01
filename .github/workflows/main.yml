@@ -28,15 +28,14 @@ jobs:
           push: true
           tags: yaodo/nodejstest:latest
       - 
-        name: SSH Remote deploy
+        name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
-        with: 
+        with:
           host: 146.56.112.29
           username: ${{ secrets.REMOTE_USERNAME }}
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
             docker rm -f nodejstest
-            rm -rf /opt/nodejstest
             docker pull yaodo/nodejstest
             docker run -p 49160:8080 -d yaodo/nodejstest
