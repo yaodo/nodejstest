@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
-            docker rm -f kamifaka
+            docker rm -f nodejstest
             rm -rf /opt/nodejstest
             docker pull yaodo/nodejstest
             docker run -p 49160:8080 -d yaodo/nodejstest
